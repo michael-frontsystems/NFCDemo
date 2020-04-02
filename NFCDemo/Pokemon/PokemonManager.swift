@@ -12,8 +12,7 @@ import UIKit
 class PokeManager {
   static let urlSession = URLSession(configuration: .default)
   
-  static func pokemon(id: Int,
-                      completionHandler: @escaping (_ pokemon: Pokemon) -> Void) {
+  static func pokemon(id: Int, completionHandler: @escaping (_ pokemon: Pokemon) -> Void) {
     let pokeUrl = buildPokemonURL(id: id)
     let task = urlSession.dataTask(with: pokeUrl) { (data, _, _) in
       let pokemon = try! JSONDecoder().decode(Pokemon.self, from: data!)
